@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-109046767-2');
+		</script>
+
+
+		<!-- CHANGE HERE -->
+		<title>A Multimodal Dynamical Variational Autoencoder for Audiovisual Speech Representation Learning</title>
+		<!-- ----------- -->
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600|Source+Code+Pro" rel="stylesheet" />
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+
+		<!-- The loading of KaTeX is deferred to speed up page rendering -->
+		<script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+
+		<!-- To automatically render math in text elements, include the auto-render extension: -->
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+		<script src="js/skel.min.js">
+		{
+			prefix: 'css/style',
+			preloadStyleSheets: true,
+			resetCSS: true,
+			boxModel: 'border',
+			grid: { gutters: 30 },
+			breakpoints: {
+				wide: { range: '1200-', containers: 1140, grid: { gutters: 50 } },
+				narrow: { range: '481-1199', containers: 960 },
+				mobile: { range: '-480', containers: 'fluid', lockViewport: true, grid: { collapse: true } }
+			}
+		}
+		</script>
+
+		<style>
+			table tr th, table tr td {
+			text-align: center;
+			vertical-align: middle;
+			border: 0px solid white;
+			border-collapse: collapse;
+			}
+		</style>
+
+		<style type="text/css">a {text-decoration: none}</style>
+
+	</head>
+
+	<body>
+
+		<div id="site_content">
+		<div class="container">
+
+		<!-- Features -->
+		<div class="row">
+			<section class="12u">
+
+				<h2 style="text-align: center;">
+					A Multimodal Dynamical Variational Autoencoder for Audiovisual Speech Representation Learning
+				</h2>
+
+				<p style="text-align: center;">
+					Samir Sadok<sup>1</sup>&emsp;&emsp; Simon Leglaive<sup>1</sup>&emsp;&emsp; Laurent Girin<sup>2</sup>&emsp;&emsp; Xavier Alameda-Pineda<sup>3</sup>&emsp;&emsp; Renaud Séguier<sup>1</sup>&emsp;&emsp;
+				</p>
+
+				<p style="text-align: center; line-height: 100%;">
+					<sup>1</sup>CentraleSupélec, IETR UMR CNRS 6164, France &emsp;&emsp; <br>
+					<sup>2</sup>Univ. Grenoble Alpes, CNRS, Grenoble-INP, GIPSA-lab, France  &emsp;&emsp;<br>
+					<sup>3</sup>Inria, Univ. Grenoble Alpes, CNRS, LJK, France<br>
+				</p>
+				<!--
+				<p style="text-align: center;">
+					Inproceedings
+				</p> 
+				-->
+
+				<p style="text-align: center;">
+					 <a href="https://arxiv.org/abs/2204.07075" target="_blank" rel="noopener">Article</a> |
+					<!-- <a href="#audio">Audio examples</a> |  -->
+					 <a href="documents/presentation_icassp2020.pdf">Slides</a> |  
+					<a href="https://github.com/samsad35/source-filter-vae" target="_blank" rel="noopener">Code</a> 
+					<!-- <a href="https://hal.archives-ouvertes.fr/hal-03603791v1/bibtex" target="_blank" rel="noopener">Bibtex</a> | -->
+					<!-- <a href="#acknowledgement">Acknowledgement</a> -->
+				</p>
+
+				<!-- Abstract -->
+				<strong><span style="font-size: large;"><a name="abstract"></a>Abstract</span></strong>
+				<hr>
+
+				<table width="100%">
+				<tr>
+					<td style="width: 100%; text-align: justify; vertical-align: top;">
+					Controlling and understanding the latent space of a multimodal generative model is a current challenge to perform analysis and to have a meaningful representation improving auxiliary tasks such as emotion classification. We have developed dynamical multimodal VAE (MDVAE), a double hierarchical generative model: at the temporal level (static and dynamical) and the modality level (specific and shared). This latent space disentanglement is adequate for very heterogeneous data where the temporal dimension is present. Trained on an audio-visual database, MDVAE can dissociate lip configuration from other visual information (such as eye movement) in different spaces. MDVAE can also separate static global information such as the physical description of the face or emotions from dynamical information such as the movement of the head or the eyes. We show that our method is generalizable to multimodal data other than audio-visual.
+					</td>
+					<td>
+					<img src="demos/MDVAE/overview.png" align="right" width="300"> 
+					</td>
+				<!-- 
+				<td style="width: 5%; text-align: justify;"></td>
+				<td style="width: 30%; text-align: left;"><img class="wp-image-7444 aligncenter" src="https://assets.afcdn.com/recipe/20200506/110674_w1024h768c1cx1920cy2880.jpg" alt="" width="200" /></a></td>
+				-->
+				</tr>
+				</table>
+
+
+				<!-- Phase reconstruction problem -->
+				<span style="font-size: large;"><a name="phase_reconstruction"></a><strong>MDVAE: Multimodal Dynamical Variational Autoencoder</strong></span>
+				<hr>
+				<p style = "text-align: justify; vertical-align: top;">The VAE has been extended in many ways, including for dealing with data that are either multimodal or dynamical (i.e., sequential), but not both at the same time. This paper proposes an approach to combine these two extensions in order to process simultaneously multimodal data and sequential data (e.g., audio-visual data).
+				To our knowledge, it is the first generative model that considers the inputs' multimodality and their dynamical aspects. Our goal is to have a hierarchical latent space, one in the temporal perspective to dissociate static information from dynamical information and another in the modality perspective to separate common information from specific information for each modality.
+				</p>
+				Two significant contributions are implemented in our studies:
+				<ul>
+				  <li> Representation of heterogeneous multimodal data by low-dimensional latent spaces learned in an unsupervised way: a latent dynamical space specific to each modality, taking into account temporal dependencies. Another latent dynamical space but this time shared by the modalities. And finally, a latent static space to encode the global and temporally independent information. Trained on an audio-visual database, we experimentally show that the MDVAE manages to dissociate the dynamical information from the global static information while factoring it into shared and modality-specific latent spaces. </li>
+				  <li> Improvement of the data reconstruction quality by training MDVAE in two steps: the first step consists in learning VQ-VAE independently for each modality without the temporal aspect. Moreover, the second step consists in learning the MDVAE, whose inputs are the intermediate representations of the VQ-VAE before quantization. The temporal disentanglement and the modalities' disentanglement occur in this second stage.</li>
+				</ul>
+				
+				<table>
+					<td text-align: center;>
+						<img src="demos/MDVAE/VQ-MDVAE.png" alt="VQ-MDVAE"  width="880" />
+					</td>
+					
+					<td>
+						<img src="demos/MDVAE/notations.PNG" alt="F1 subspace"  width="250" />
+					</td>
+				</table>
+
+			<!-- VISUALISATION OF THE LEARNED LATENT SUBSPACES -->
+			<span style="font-size: large;"><a name="latentspace"></a><strong>What is encoded in the latent spaces of the MDVAE?</strong></span>
+			<hr>
+			
+			We will present qualitative results obtained by reconstructing an audiovisual speech sequence using some of the latent variables from another sequence.
+			<br>
+			<span style="font-size: medium; color:#A9A9A9;"><a name="Visual"></a><strong>For visual representation:</strong></span>
+			
+			
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+					<td>
+					<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the central sequence in red to the surrounding sequences.</p>
+						<img src="demos/GIfs/z_visual.gif" alt="z_v"  width="300" />
+					<p> Only head and eye movements are transfered.</p>
+					</td>
+					
+					<td>
+					<p> We transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the central sequence in red to the surrounding sequences.</p>
+						<img src="demos/GIfs/z_av.gif" alt="z_v"  width="300" />
+						<p> Only lip movements are transfered.</p>
+					</td>
+					
+					<td>
+					<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the central sequence in red to the surrounding sequences.</p>
+						<img src="demos/GIfs/gif-4.gif" alt="z_v"  width="300" />
+						<p> All dynamical factors are transfered.</p>
+					</td>
+			</table>
+			</div>
+			
+			<div style="width:100%; text-align: center;">
+				<video controls autoplay  muted preload="auto" width="1000" height="700">
+				  <source src="demos/Video/video-13.mp4" type="video/mp4">
+				  <source src="demos/Video/video-13.ogg" type="video/ogg">
+				  Your browser does not support the video tag.
+				</video>
+			</div>
+
+
+			</section>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -13,6 +13,17 @@
 		<!-- CHANGE HERE -->
 		<title>A Multimodal Dynamical Variational Autoencoder for Audiovisual Speech Representation Learning</title>
 		<!-- ----------- -->
+		<script src="https://cdn.jsdelivr.net/npm/before-after-slider@1.0.0/dist/slider.bundle.js"></script>
+
+
+		<script
+		  defer
+		  src="https://unpkg.com/img-comparison-slider@7/dist/index.js"
+		></script>
+		<link
+		  rel="stylesheet"
+		  href="https://unpkg.com/img-comparison-slider@7/dist/styles.css"
+		/>
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600|Source+Code+Pro" rel="stylesheet" />
@@ -131,7 +142,7 @@
 			<br>
 			<span style="font-size: medium; color:#757470;"><a name="Visual"></a><strong>For the visual modality:</strong></span>
 			
-			
+
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 					<td>
@@ -153,6 +164,80 @@
 					</td>
 			</table>
 			</div>
+
+			<hr style="width:50%">
+
+
+			<style type="text/css">
+			  img-comparison-slider {
+				--divider-width: 3px;
+				--divider-color: #ECF0F1;
+				--default-handle-width: 80px;
+				--default-handle-opacity: 1.0;
+				--divider-shadow: 0px 0px 5px rgba(0, 0, 1, 0.5);
+				--default-handle-color: #ECF0F1;
+			  }
+			</style>
+
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+				<td>
+					<p> Two original visual sequences. (Scroll left) the visual sequence of a man; (Scroll right) the visual sequence of a woman;  </p>
+					<img-comparison-slider>
+						<img slot="first" src="demos/sliders/images/2.png" width="100%"/>
+						<img slot="second" src="demos/sliders/images/1.png" width="100%" />
+					</img-comparison-slider>
+				</td>
+				<td>
+			</table>
+			</div>
+			<style>
+				img.target {
+					filter: opacity(80%);
+				}
+			</style>
+
+			<style>
+				img.source {
+				   filter: opacity(100%);
+				}
+			</style>
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+				<tr>
+					<td>
+						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the bleached sequence to the normal sequence.  </p>
+						<img-comparison-slider>
+							<img class="source" slot="first" src="demos/sliders/images/zv.png" width="100%"/>
+							<img class="target" slot="second" src="demos/sliders/images/1.png" width="100%" />
+						</img-comparison-slider>
+					</td>
+					<td>
+						<p> We transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the bleached sequence to the normal sequence.  </p>
+						<img-comparison-slider>
+							<img class="source" slot="first" src="demos/sliders/images/zav.png" width="100%"/>
+							<img class="target" slot="second" src="demos/sliders/images/1.png" width="100%" />
+						</img-comparison-slider>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<img-comparison-slider>
+							<img class="source" slot="first" src="demos/sliders/images/zv-2.png" width="100%"/>
+							<img class="target" slot="second" src="demos/sliders/images/2.png" width="100%" />
+						</img-comparison-slider>
+					</td>
+					<td>
+						<img-comparison-slider>
+							<img class="source" slot="first" src="demos/sliders/images/zav-2.png" width="100%"/>
+							<img class="target" slot="second" src="demos/sliders/images/2.png" width="100%" />
+						</img-comparison-slider>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<hr style="width:50%">
 			In the annimation below, we transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> and <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the central sequence in red to the surrounding sequences. The identity and global emotional state are preserved because \myw{}w is unaltered.
 			<div style="width:100%; text-align: center;">
 				<video controls autoplay  muted preload="auto" width="1000" height="700">
@@ -161,33 +246,67 @@
 				  Your browser does not support the video tag.
 				</video>
 			</div>
-			
+
+
+
+
 			<br>
 			<br>
-			<span style="font-size: strong; color:#757470;"><a name="Visual"></a><strong>For the audio modality:</strong></span>
+			<span style="font-size: strong; color:#757470;"><a name="Audio"></a><strong>For the audio modality:</strong></span>
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 					<td>
-					<p> <span style="color:blue">\(\mathbf{z}^{(a)}\) </span> and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> are fixed, <span style="color:green">\(\mathbf{w}\)</span> varies.</p>
-						<img src="demos/Gifs/vary_w.gif" alt="audio-w"  width="320" />
-					<p> <span style="color:green">\(\mathbf{w}\)</span> seems to encode the speaker's audio identity. </p>
+						<p> <span style="color:blue">\(\mathbf{z}^{(a)}\) </span> and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> are fixed, <span style="color:green">\(\mathbf{w}\)</span> varies.</p>
+						<img src="demos/Gifs/vary_w.gif" alt="audio-w"  width="350" />
+						<p> <span style="color:green">\(\mathbf{w}\)</span> seems to encode the speaker's audio identity. </p>
 					</td>
 					
 					<td>
-					<p> <span style="color:green">\(\mathbf{w}\)</span>  and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> are fixed, <span style="color:blue">\(\mathbf{z}^{(a)}\) </span> varies.</p>
-						<img src="demos/Gifs/vary_z_a.gif" alt="audio-za"  width="320" />
+						<p> <span style="color:green">\(\mathbf{w}\)</span>  and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> are fixed, <span style="color:blue">\(\mathbf{z}^{(a)}\) </span> varies.</p>
+						<img src="demos/Gifs/vary_z_a.gif" alt="audio-za"  width="350" />
 						<p> <span style="color:green">\(\mathbf{z}^{(v)}\) </span> encodes the high-frequency phonemic content.</p>
 					</td>
 					
 					<td>
 					<p> <span style="color:blue">\(\mathbf{z}^{(a)}\) </span> and <span style="color:green">\(\mathbf{w}\)</span> are fixed, <span style="color:green">\(\mathbf{z}^{(av)}\) </span> varies.</p>
-						<img src="demos/Gifs/vary_z_ds.gif" alt="audio-zav"  width="320" />
+						<img src="demos/Gifs/vary_z_ds.gif" alt="audio-zav"  width="350" />
 						<p> <span style="color:green">\(\mathbf{z}^{(av)}\) </span> encodes the low-frequency phonemic content.</p>
 					</td>
 			</table>
 			</div>
-			
-			
+
+			<script>
+				var za  = 1;
+				var zav  = 1;
+        		function myFunctionZa() {
+				  za = Math.floor(Math.random()*100);
+				  document.getElementById('za1').src="demos/generation/audio/zaudio-"+za+".png"
+				  document.getElementById('za2').src="demos/generation/audio-2/zaudio-"+za+".png"
+				}
+
+				function myFunctionZav() {
+				  zav = Math.floor(Math.random() * 100);
+				  document.getElementById('zav1').src="demos/generation/audio/zds-"+zav+".png"
+				  document.getElementById('zav2').src="demos/generation/audio-2/zds-"+zav+".png"
+				}
+    		</script>
+
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+					<td>
+						 <p><button onclick="myFunctionZa()"> Sampling according to the Gaussian distribution prior of <span style="color:blue">\(\mathbf{z}^{(a)}\) </span></button></p>
+						<img id="za1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
+						<img id="za2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
+					</td>
+					<td>
+						<p><button onclick="myFunctionZav()"> Sampling according to the Gaussian distribution prior of <span style="color:green">\(\mathbf{z}^{(av)}\) </span></button></p>
+						<img id="zav1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
+						<img id="zav2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
+					</td>
+			</table>
+			</div>
+
+
 			<!-- Interpolation in the static audiovisual latent space -->
 			<span style="font-size: large;"><a name="latentspace"></a><strong>Interpolation in the static audiovisual latent space</strong></span>
 			<hr>
@@ -212,6 +331,38 @@
 						</video>
 						<p> Same emotion, different identities.</p>
 					</td>
+			</table>
+			</div>
+
+
+			<style type="text/css">
+			  img-comparison-slider {
+				--divider-width: 4px;
+				--divider-color: #F7DC6F;
+				--default-handle-width: 80px;
+				--default-handle-opacity: 1.0;
+				--default-handle-color: #F7DC6F;
+				--handle-position-start: 50%;
+			  }
+			</style>
+
+
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+				<td>
+					<p> Two original visual sequences. (Scroll left) the visual sequence of a man; (Scroll right) the visual sequence of a woman;  </p>
+					<img-comparison-slider value="10" hover=false>
+						<img slot="second" src="demos/sliders/images/interpolation/identity-before.png" width="100%"/>
+						<img slot="first" src="demos/sliders/images/interpolation/identity-after.png" width="100%" />
+					</img-comparison-slider>
+				</td>
+				<td>
+					<p> Two original visual sequences. (Scroll left) the visual sequence of a man; (Scroll right) the visual sequence of a woman;  </p>
+					<img-comparison-slider value="10" hover=false>
+						<img slot="second" src="demos/sliders/images/interpolation/emotion-before.png" width="100%"/>
+						<img slot="first" src="demos/sliders/images/interpolation/emotion-after.png" width="100%" />
+					</img-comparison-slider>
+				</td>
 			</table>
 			</div>
 			

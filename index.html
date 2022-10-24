@@ -8,7 +8,7 @@
 
 		  gtag('config', 'UA-109046767-2');
 		</script>
-
+		<link rel="icon" type="image/png" href="demos/onglet.png" />
 
 		<!-- CHANGE HERE -->
 		<title>A Multimodal Dynamical Variational Autoencoder for Audiovisual Speech Representation Learning</title>
@@ -341,20 +341,19 @@
 			<table style="width:100%; text-align: center;">
 					<td>
 						<video controls autoplay  muted loop preload="auto" width="500">
-						  <source src="demos/Video/emotions_interpolation.mp4" type="video/mp4">
-						  <source src="demos/Video/emotions_interpolation.ogg" type="video/ogg">
-						  Your browser does not support the video tag.
-						</video>
-					<p>Same identity, different emotions. </p>
-					</td>
-					
-					<td>
-						<video controls autoplay  muted loop preload="auto" width="500">
 						  <source src="demos/Video/identity_interpolation.mp4" type="video/mp4">
 						  <source src="demos/Video/identity_interpolation.ogg" type="video/ogg">
 						  Your browser does not support the video tag.
 						</video>
 						<p> Same emotion, different identities.</p>
+					</td>
+					<td>
+						<video controls autoplay  muted loop preload="auto" width="500">
+						  <source src="demos/Video/emotions_interpolation.mp4" type="video/mp4">
+						  <source src="demos/Video/emotions_interpolation.ogg" type="video/ogg">
+						  Your browser does not support the video tag.
+						</video>
+					<p>Same identity, different emotions. </p>
 					</td>
 			</table>
 			</div>
@@ -364,14 +363,14 @@
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 				<td>
-					<p> Two original visual sequences. (Scroll left) the visual sequence of a man; (Scroll right) the visual sequence of a woman;  </p>
+					<p> Scroll right to change the identity in a smooth way, keeping the emotion;  </p>
 					<img-comparison-slider value="10" hover=false>
 						<img slot="second" src="demos/sliders/images/interpolation/identity-before.png" width="100%"/>
 						<img slot="first" src="demos/sliders/images/interpolation/identity-after.png" width="100%" />
 					</img-comparison-slider>
 				</td>
 				<td>
-					<p> Two original visual sequences. (Scroll left) the visual sequence of a man; (Scroll right) the visual sequence of a woman;  </p>
+					<p> Scroll right to change the emotion in a smooth way, keeping the identity;  </p>
 					<img-comparison-slider value="10" hover=false>
 						<img slot="second" src="demos/sliders/images/interpolation/emotion-before.png" width="100%"/>
 						<img slot="first" src="demos/sliders/images/interpolation/emotion-after.png" width="100%" />
@@ -382,9 +381,29 @@
 
 			<!-- Interpolation in the static audiovisual latent space -->
 			<span style="font-size: large;"><a name="latentspace"></a><strong>VISUALIZATION OF THE LATENT SPACES</strong></span>
+
+
 			<div style="width:100%; text-align: center;">
-			<iframe src="https://chart-studio.plotly.com/~sam-sad/21.embed" frameborder="0" width="960" height="960" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-			</iframe>
+			<table style="width:100%; text-align: center;">
+				<td>
+					<div style="width:100%; text-align: center;">
+					<a href="https://chart-studio.plotly.com/~sam-sad/27/#plot">For a better view</a>
+					<iframe src="https://plotly.com/~sam-sad/27/" frameborder="0"
+							width="500" height="500" allowfullscreen="true"
+							mozallowfullscreen="true" webkitallowfullscreen="true">
+					</iframe>
+					</div>
+				</td>
+				<td>
+					<div style="width:100%; text-align: center;">
+					<a href="https://chart-studio.plotly.com/~sam-sad/23/#plot">For a better view</a>
+					<iframe src="https://plotly.com/~sam-sad/23/" frameborder="0"
+							width="500" height="500" allowfullscreen="true"
+							mozallowfullscreen="true" webkitallowfullscreen="true">
+					</iframe>
+					</div>
+				</td>
+			</table>
 			</div>
 
 		</div>

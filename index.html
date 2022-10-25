@@ -110,7 +110,7 @@
 				<div style="width:100%; text-align: center;">
 					<img src="demos/MDVAE/graph.png" align="right" width="600" title="MDVAE’s graphical model in compact form"> 
 				</div>
-				<p style = "text-align: justify; vertical-align: top;"> Controlling and understanding the latent space of a multimodal generative model is a current challenge to perform analysis and to have a meaningful representation improving auxiliary tasks such as emotion classification. We have developed dynamical multimodal VAE (MDVAE), a double hierarchical generative model: at the temporal level (static and dynamical) and the modality level (specific and shared). This latent space disentanglement is adequate for very heterogeneous data where the temporal dimension is present. Trained on an audio-visual database, MDVAE can dissociate lip configuration from other visual information (such as eye movement) in different spaces. MDVAE can also separate static global information such as the physical description of the face or emotions from dynamical information such as the movement of the head or the eyes. We show that our method is generalizable to multimodal data other than audio-visual. </p>
+				<p style = "text-align: justify; vertical-align: top;">  Variational AutoEncoder (VAE) has successfully undergone two extensions in recent years, one to tackle sequential data and another for multimodal data, but not simultaneously. In this work, we propose a hierarchical extension of VAE for combined sequential and multimodal modeling. This model, named Multimodal Dynamical VAE (MDVAE), is hierarchically structured from a temporal level where dynamic information is separated from static information and from a modality level where shared information is separated from modality-specific information. Trained on audio-visual emotional speech data, MDVAE can effectively dissociate emotion and person identity information from dynamic information and disentangled lip movements correlated with low speech formants from the eye or head movements. Thanks to the efficient structure of the latent spaces, we show quantitatively that MDVAE is more robust to noise and has meaningful representation improving auxiliary tasks such as emotion classification. </p>
 
 				<!-- Phase reconstruction problem -->
 				<span style="font-size: large;"><a name="phase_reconstruction"></a><strong>MDVAE: Multimodal Dynamical Variational Autoencoder</strong></span>
@@ -319,11 +319,13 @@
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 					<td>
-						 <p><button onclick="myFunctionZa()"> Sampling according to the Gaussian distribution prior of <span style="color:blue">\(\mathbf{z}^{(a)}\) </span></button></p>
+						<p>  Example of speech power spectrogram reconstructed (0-1 s) and generated (1-2.6 s) by a MDVAE model.</p>
+						<p><button onclick="myFunctionZa()"> Sampling according to the Gaussian distribution prior of <span style="color:blue">\(\mathbf{z}^{(a)}\) </span></button></p>
 						<img id="za1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
 						<img id="za2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
 					</td>
 					<td>
+						<p>  Example of speech power spectrogram reconstructed (0-1 s) and generated (1-2.6 s) by a MDVAE model.</p>
 						<p><button onclick="myFunctionZav()"> Sampling according to the Gaussian distribution prior of <span style="color:green">\(\mathbf{z}^{(av)}\) </span></button></p>
 						<img id="zav1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
 						<img id="zav2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
@@ -340,7 +342,7 @@
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 					<td>
-						<video controls autoplay  muted loop preload="auto" width="500">
+						<video controls autoplay  muted loop preload="auto" width="300">
 						  <source src="demos/Video/identity_interpolation.mp4" type="video/mp4">
 						  <source src="demos/Video/identity_interpolation.ogg" type="video/ogg">
 						  Your browser does not support the video tag.
@@ -348,7 +350,7 @@
 						<p> Same emotion, different identities.</p>
 					</td>
 					<td>
-						<video controls autoplay  muted loop preload="auto" width="500">
+						<video controls autoplay  muted loop preload="auto" width="300">
 						  <source src="demos/Video/emotions_interpolation.mp4" type="video/mp4">
 						  <source src="demos/Video/emotions_interpolation.ogg" type="video/ogg">
 						  Your browser does not support the video tag.
@@ -380,25 +382,25 @@
 			</div>
 
 			<!-- Interpolation in the static audiovisual latent space -->
-			<span style="font-size: large;"><a name="latentspace"></a><strong>VISUALIZATION OF THE LATENT SPACES</strong></span>
+			<span style="font-size: large;"><a name="latentspacew"></a><strong>VISUALIZATION OF THE LATENT SPACES</strong></span>
 
 
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 				<td>
 					<div style="width:100%; text-align: center;">
-					<a href="https://chart-studio.plotly.com/~sam-sad/27/#plot">For a better view</a>
+<!--					<a href="https://chart-studio.plotly.com/~sam-sad/27/#plot">For a better view</a>-->
 					<iframe src="https://plotly.com/~sam-sad/27/" frameborder="0"
-							width="500" height="500" allowfullscreen="true"
+							width="600" height="600" allowfullscreen="true"
 							mozallowfullscreen="true" webkitallowfullscreen="true">
 					</iframe>
 					</div>
 				</td>
 				<td>
 					<div style="width:100%; text-align: center;">
-					<a href="https://chart-studio.plotly.com/~sam-sad/23/#plot">For a better view</a>
+<!--					<a href="https://chart-studio.plotly.com/~sam-sad/23/#plot">For a better view</a>-->
 					<iframe src="https://plotly.com/~sam-sad/23/" frameborder="0"
-							width="500" height="500" allowfullscreen="true"
+							width="600" height="600" allowfullscreen="true"
 							mozallowfullscreen="true" webkitallowfullscreen="true">
 					</iframe>
 					</div>
@@ -406,6 +408,16 @@
 			</table>
 			</div>
 
+			<!-- Interpolation in the static audiovisual latent space -->
+			<span style="font-size: large;"><a name="landmark+visual"></a><strong>VISUAL LANDMARKS-MDVAE</strong></span>
+				<p>For a generalization to other modalities, we trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the lip landmarks only.</p>
+				<div style="width:100%; text-align: center;">
+				<video controls autoplay  muted loop preload="auto" width="500" height="500">
+				  <source src="demos/Video/landmark-visual.mp4" type="video/mp4">
+				  <source src="demos/Video/landmark-visual.ogg" type="video/ogg">
+				  Your browser does not support the video tag.
+				</video>
+			</div>
 		</div>
 	</div>
 </div>

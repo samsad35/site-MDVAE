@@ -123,17 +123,17 @@
 				  <li> Representation of heterogeneous multimodal data by low-dimensional latent spaces learned in an unsupervised way: a latent dynamical space specific to each modality, taking into account temporal dependencies. Another latent dynamical space but this time shared by the modalities. And finally, a latent static space to encode the global and temporally independent information. Trained on an audio-visual database, we experimentally show that the MDVAE manages to dissociate the dynamical information from the global static information while factoring it into shared and modality-specific latent spaces. </li>
 				  <li> Improvement of the data reconstruction quality by training MDVAE in two steps: the first step consists in learning VQ-VAE independently for each modality without the temporal aspect. Moreover, the second step consists in learning the MDVAE, whose inputs are the intermediate representations of the VQ-VAE before quantization. The temporal disentanglement and the modalities' disentanglement occur in this second stage.</li>
 				</ul>
-				
-				<table>
-					<td text-align: center;>
-						<img src="demos/MDVAE/VQ-MDVAE.png" alt="VQ-MDVAE"  width="880" />
-					</td>
-					
-					<td>
-						<img src="demos/MDVAE/notations.PNG" alt="F1 subspace"  width="250" />
-					</td>
-				</table>
+				<div style="width:100%; text-align: center">
+					<table>
+						<td>
+							<img src="demos/MDVAE/VQ-MDVAE.png" alt="VQ-MDVAE"  width="880" />
+						</td>
 
+						<td>
+							<img src="demos/MDVAE/notations.PNG" alt="F1 subspace"  width="250" />
+						</td>
+					</table>
+				</div>
 			<!-- VISUALISATION OF THE LEARNED LATENT SUBSPACES -->
 			<span style="font-size: large;"><a name="latentspace"></a><strong>What is encoded in the latent spaces of the MDVAE?</strong></span>
 			<hr>
@@ -143,7 +143,7 @@
 			<span style="font-size: medium; color:#757470;"><a name="Visual"></a><strong>For the visual modality:</strong></span>
 			
 
-			<div style="width:100%; text-align: center;">
+			<div style="width:100%; text-align: justify; border: 1px solid black;">
 			<table style="width:100%; text-align: center;">
 					<td>
 					<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the central sequence in red to the surrounding sequences.</p>
@@ -164,10 +164,8 @@
 					</td>
 			</table>
 			</div>
-
-			<hr style="width:50%">
-
-
+			<br>
+			<div style="border: 1px solid black;">
 			<style type="text/css">
 			  img-comparison-slider {
 				--divider-width: 3px;
@@ -184,13 +182,91 @@
 				<td>
 					<p> Two original visual sequences. (Scroll left) the visual sequence of a man; (Scroll right) the visual sequence of a woman;  </p>
 					<img-comparison-slider>
-						<img class="source" slot="first" src="demos/sliders/images/2.png" width="100%"/>
-						<img class="source" slot="second" src="demos/sliders/images/1.png" width="100%" />
+						<img id="original-2" class="source" slot="first" src="demos/sliders/images/exemple-1/2.png" width="100%"/>
+						<img id="original-1" class="source" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />
 					</img-comparison-slider>
 				</td>
 				<td>
 			</table>
 			</div>
+			<center>
+      			<p id="number">Example n° 1</p>
+      			<button id="back" onclick="back()" style="border-radius: 10px; width: 300px;}">Back</button>
+      			<button id="next" onclick="next()" style="border-radius: 10px; width: 300px;}">Next</button>
+			</center>
+
+			<script>
+				backButton = document.getElementById("back");
+				nextButton = document.getElementById("next");
+				number = document.getElementById("number");
+				var count = 1;
+				if (count == 1){
+					backButton.disabled = true;
+				}
+
+				function next(){
+					count = count + 1;
+					if (count != 1){
+						backButton.disabled = false;
+					}
+					if (count == 2){
+						nextButton.disabled = true;
+					}
+					number.innerHTML = "Example n° " + count;
+					document.getElementById('original-2').src="demos/sliders/images/exemple-"+count+"/2.png"
+					document.getElementById('original-2-v').src="demos/sliders/images/exemple-"+count+"/2.png"
+					document.getElementById('original-2-av').src="demos/sliders/images/exemple-"+count+"/2.png"
+					document.getElementById('original-2-av-v').src="demos/sliders/images/exemple-"+count+"/2.png"
+
+
+					document.getElementById('zv').src="demos/sliders/images/exemple-"+count+"/zv.png"
+					document.getElementById('zv-2').src="demos/sliders/images/exemple-"+count+"/zv-2.png"
+
+					document.getElementById('zav').src="demos/sliders/images/exemple-"+count+"/zav.png"
+					document.getElementById('zav-2').src="demos/sliders/images/exemple-"+count+"/zav-2.png"
+
+					document.getElementById('zav-zv').src="demos/sliders/images/exemple-"+count+"/zav-zv.png"
+					document.getElementById('zav-zv-2').src="demos/sliders/images/exemple-"+count+"/zav-zv-2.png"
+
+
+					document.getElementById('original-1').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1-v').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1-av').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1-av-v').src="demos/sliders/images/exemple-"+count+"/1.png"
+
+					}
+
+				function back(){
+					count = count - 1;
+					if (count == 1){
+						backButton.disabled = true;
+					}
+					if (count < 2){
+						nextButton.disabled = false;
+					}
+					number.innerHTML = "Example n° " + count;
+					document.getElementById('original-2').src="demos/sliders/images/exemple-"+count+"/2.png"
+					document.getElementById('original-2-v').src="demos/sliders/images/exemple-"+count+"/2.png"
+					document.getElementById('original-2-av').src="demos/sliders/images/exemple-"+count+"/2.png"
+					document.getElementById('original-2-av-v').src="demos/sliders/images/exemple-"+count+"/2.png"
+
+					document.getElementById('zv').src="demos/sliders/images/exemple-"+count+"/zv.png"
+					document.getElementById('zv-2').src="demos/sliders/images/exemple-"+count+"/zv-2.png"
+
+					document.getElementById('zav').src="demos/sliders/images/exemple-"+count+"/zav.png"
+					document.getElementById('zav-2').src="demos/sliders/images/exemple-"+count+"/zav-2.png"
+
+					document.getElementById('zav-zv').src="demos/sliders/images/exemple-"+count+"/zav-zv.png"
+					document.getElementById('zav-zv-2').src="demos/sliders/images/exemple-"+count+"/zav-zv-2.png"
+
+					document.getElementById('original-1').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1-v').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1-av').src="demos/sliders/images/exemple-"+count+"/1.png"
+					document.getElementById('original-1-av-v').src="demos/sliders/images/exemple-"+count+"/1.png"
+					}
+			</script>
+
 			<style>
 				img.target {
 					filter: brightness(70%);
@@ -208,15 +284,15 @@
 					<td>
 						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the shadow sequence to the non-shadow sequence.  </p>
 						<img-comparison-slider value="10">
-							<img class="source" slot="first" src="demos/sliders/images/zv.png" width="100%"/>
-							<img class="target" slot="second" src="demos/sliders/images/1.png" width="100%" />
+							<img id="zv" class="source" slot="first" src="demos/sliders/images/exemple-1/zv.png" width="100%"/>
+							<img id="original-1-v" class="target" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 					<td>
 						<p> We transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the shadow sequence to the non-shadow sequence.  </p>
 						<img-comparison-slider value="10">
-							<img class="source" slot="first" src="demos/sliders/images/zav.png" width="100%"/>
-							<img class="target" slot="second" src="demos/sliders/images/1.png" width="100%" />
+							<img id="zav" class="source" slot="first" src="demos/sliders/images/exemple-1/zav.png" width="100%"/>
+							<img id="original-1-av" class="target" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 				</tr>
@@ -224,47 +300,48 @@
 				<tr>
 					<td>
 						<img-comparison-slider value="10">
-							<img class="source" slot="first" src="demos/sliders/images/zv-2.png" width="100%"/>
-							<img class="target" slot="second" src="demos/sliders/images/2.png" width="100%" />
+							<img id="zv-2" class="source" slot="first" src="demos/sliders/images/exemple-1/zv-2.png" width="100%"/>
+							<img id="original-2-v" class="target" slot="second" src="demos/sliders/images/exemple-1/2.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 					<td>
 						<img-comparison-slider value="10">
-							<img class="source" slot="first" src="demos/sliders/images/zav-2.png" width="100%"/>
-							<img class="target" slot="second" src="demos/sliders/images/2.png" width="100%" />
+							<img id="zav-2" class="source" slot="first" src="demos/sliders/images/exemple-1/zav-2.png" width="100%"/>
+							<img id="original-2-av" class="target" slot="second" src="demos/sliders/images/exemple-1/2.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 				</tr>
 			</table>
 			</div>
 
-			<div style="width:100%; text-align: center;">
-			<table style="width:100%; text-align: center;">
+				<div style="width:100%; text-align: center;">
+					<table style="width:100%; text-align: center;">
 				<tr>
 					<td>
 						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the shadow sequence to the non-shadow sequence. </p>
 						<img-comparison-slider value="10">
-							<img class="source" slot="first" src="demos/sliders/images/zav-zv-2.png" width="100%"/>
-							<img class="target" slot="second" src="demos/sliders/images/2.png" width="100%" />
+							<img id="zav-zv" class="source" slot="first" src="demos/sliders/images/exemple-1/zav-zv.png" width="100%"/>
+							<img id="original-1-av-v" class="target" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 				</tr>
+
 				<tr>
 					<td>
 						<img-comparison-slider value="10">
-							<img class="source" slot="first" src="demos/sliders/images/zav-zv.png" width="100%"/>
-							<img class="target" slot="second" src="demos/sliders/images/1.png" width="100%" />
+							<img id="zav-zv-2" class="source" slot="first" src="demos/sliders/images/exemple-1/zav-zv-2.png" width="100%"/>
+							<img id="original-2-av-v" class="target" slot="second" src="demos/sliders/images/exemple-1/2.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 				</tr>
-
 			</table>
+				</div>
+
 			</div>
+			<br>
 
-
-			<hr style="width:50%">
-			In the annimation below, we transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> and <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the central sequence in red to the surrounding sequences. The identity and global emotional state are preserved because \myw{}w is unaltered.
-			<div style="width:100%; text-align: center;">
+			<div style="width:100%; text-align: center; border: 1px solid black;">
+				In the annimation below, we transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> and <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the central sequence in red to the surrounding sequences. The identity and global emotional state are preserved because <span style="color:green">\(\mathbf{w}\)</span> is unaltered.
 				<video controls autoplay  muted preload="auto" width="1000" height="700">
 				  <source src="demos/Video/video-13.mp4" type="video/mp4">
 				  <source src="demos/Video/video-13.ogg" type="video/ogg">
@@ -409,15 +486,46 @@
 			</div>
 
 			<!-- Interpolation in the static audiovisual latent space -->
-			<span style="font-size: large;"><a name="landmark+visual"></a><strong>VISUAL LANDMARKS-MDVAE</strong></span>
-				<p>For a generalization to other modalities, we trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the lip landmarks only.</p>
-				<div style="width:100%; text-align: center;">
-				<video controls autoplay  muted loop preload="auto" width="500" height="500">
-				  <source src="demos/Video/landmark-visual.mp4" type="video/mp4">
-				  <source src="demos/Video/landmark-visual.ogg" type="video/ogg">
-				  Your browser does not support the video tag.
-				</video>
+			<span style="font-size: large;"><a name="landmark+visual"></a><strong>Generalization to other type of modalities</strong></span>
+
+			<div style="width:100%; text-align: justify;">
+			<table style="width:100%; text-align: justify;">
+
+				<td>
+					<p>We trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the lip landmarks only.</p>
+					<div style="width:100%; text-align: center; border: 1px solid black;" class="video">
+						<video controls  muted loop preload="auto" width="500" height="500">
+						  <source src="demos/Video/landmark-visual.mp4" type="video/mp4">
+						  <source src="demos/Video/landmark-visual.ogg" type="video/ogg">
+						  Your browser does not support the video tag.
+						</video>
+					</div>
+				</td>
+				<td>
+					<p>We trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the left view.</p>
+					<div style="width:100%; text-align: center; border: 1px solid black;" class="video">
+						<video controls  muted loop preload="auto" width="500" height="500" >
+						  <source src="demos/Video/left+front.mp4" type="video/mp4">
+						  <source src="demos/Video/left+front.ogg" type="video/ogg">
+						  Your browser does not support the video tag.
+						</video>
+					</div>
+				</td>
+			</table>
 			</div>
+
+				<script>
+					var figure = $(".video").hover( hoverVideo, hideVideo );
+
+						function hoverVideo(e) {
+							$('video', this).get(0).play();
+						}
+
+						function hideVideo(e) {
+							$('video', this).get(0).pause();
+						}
+				</script>
+
 		</div>
 	</div>
 </div>

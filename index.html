@@ -176,7 +176,11 @@
 				--default-handle-color: #48C9B0;
 			  }
 			</style>
-
+			<center>
+      			<b id="number" style="color:#5E77E7;">Example n° 1</b><br>
+      			<button id="back" onclick="back()" style="border-radius: 10px; width: 300px;}">Back</button>
+      			<button id="next" onclick="next()" style="border-radius: 10px; width: 300px;}">Next</button>
+			</center>
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 				<td>
@@ -189,12 +193,6 @@
 				<td>
 			</table>
 			</div>
-			<center>
-      			<p id="number">Example n° 1</p>
-      			<button id="back" onclick="back()" style="border-radius: 10px; width: 300px;}">Back</button>
-      			<button id="next" onclick="next()" style="border-radius: 10px; width: 300px;}">Next</button>
-			</center>
-
 			<script>
 				backButton = document.getElementById("back");
 				nextButton = document.getElementById("next");
@@ -209,7 +207,7 @@
 					if (count != 1){
 						backButton.disabled = false;
 					}
-					if (count == 2){
+					if (count == 3){
 						nextButton.disabled = true;
 					}
 					number.innerHTML = "Example n° " + count;
@@ -242,7 +240,7 @@
 					if (count == 1){
 						backButton.disabled = true;
 					}
-					if (count < 2){
+					if (count < 3){
 						nextButton.disabled = false;
 					}
 					number.innerHTML = "Example n° " + count;
@@ -282,14 +280,14 @@
 			<table style="width:100%; text-align: center;">
 				<tr>
 					<td>
-						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the shadow sequence to the non-shadow sequence.  </p>
+						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> from the background sequence to the foreground sequence.  </p>
 						<img-comparison-slider value="10">
 							<img id="zv" class="source" slot="first" src="demos/sliders/images/exemple-1/zv.png" width="100%"/>
 							<img id="original-1-v" class="target" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />
 						</img-comparison-slider>
 					</td>
 					<td>
-						<p> We transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the shadow sequence to the non-shadow sequence.  </p>
+						<p> We transfer <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the background sequence to the foreground sequence.  </p>
 						<img-comparison-slider value="10">
 							<img id="zav" class="source" slot="first" src="demos/sliders/images/exemple-1/zav.png" width="100%"/>
 							<img id="original-1-av" class="target" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />
@@ -318,7 +316,7 @@
 					<table style="width:100%; text-align: center;">
 				<tr>
 					<td>
-						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the shadow sequence to the non-shadow sequence. </p>
+						<p> We transfer <span style="color:red">\(\mathbf{z}^{(v)}\) </span> and <span style="color:green">\(\mathbf{z}^{(av)}\) </span> from the background sequence to the foreground sequence. </p>
 						<img-comparison-slider value="10">
 							<img id="zav-zv" class="source" slot="first" src="demos/sliders/images/exemple-1/zav-zv.png" width="100%"/>
 							<img id="original-1-av-v" class="target" slot="second" src="demos/sliders/images/exemple-1/1.png" width="100%" />

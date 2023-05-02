@@ -107,22 +107,13 @@
 				<hr>
 				
 				
-				<div style="width:100%; text-align: center;">
-					<img src="demos/MDVAE/graph.png" align="right" width="600" title="MDVAE’s graphical model in compact form"> 
-				</div>
-				<p style = "text-align: justify; vertical-align: top;">  Variational AutoEncoder (VAE) has successfully undergone two extensions in recent years, one to tackle sequential data and another for multimodal data, but not simultaneously. In this work, we propose a hierarchical extension of VAE for combined sequential and multimodal modeling. This model, named Multimodal Dynamical VAE (MDVAE), is hierarchically structured from a temporal level where dynamic information is separated from static information and from a modality level where shared information is separated from modality-specific information. Trained on audio-visual emotional speech data, MDVAE can effectively dissociate emotion and person identity information from dynamic information and disentangled lip movements correlated with low speech formants from the eye or head movements. Thanks to the efficient structure of the latent spaces, we show quantitatively that MDVAE is more robust to noise and has meaningful representation improving auxiliary tasks such as emotion classification. </p>
+<!--				<div style="width:100%; text-align: center;">-->
+<!--					<img src="demos/MDVAE/graph.png" align="right" width="600" title="MDVAE’s graphical model in compact form"> -->
+<!--				</div>-->
+				<p style = "text-align: justify; vertical-align: top;"> High-dimensional data such as natural images or speech signals exhibit some form of regularity, preventing their dimensions from varying independently. This suggests that there exists a lower dimensional latent representation from which the high-dimensional observed data were generated. Uncovering the hidden explanatory features of complex data is the goal of representation learning, and deep latent variable generative models have emerged as promising unsupervised approaches. In particular, the variational autoencoder (VAE) which is equipped with both a generative and inference model allows for the analysis, transformation, and generation of various types of data. Over the past few years, the VAE has been extended to deal with data that are either multimodal \textit{or} dynamical (i.e., sequential).
+									In this paper, we present a multimodal \textit{and} dynamical VAE (MDVAE) applied to unsupervised audio-visual speech representation learning. The latent space is structured to dissociate the latent dynamical factors that are shared between the modalities from those that are specific to each modality. A static latent variable is also introduced to encode the information that is constant over time within an audiovisual speech sequence. The model is trained in an unsupervised manner on an audiovisual emotional speech dataset, in two stages. In the first stage, a vector quantized VAE (VQ-VAE) is learned independently for each modality, without temporal modeling. The second stage consists in learning the MDVAE model on the intermediate representation of the VQ-VAEs before quantization. The disentanglement between static versus dynamical and modality-specific versus modality-common information occurs during this second training stage.
+										Extensive experiments are conducted to investigate how audiovisual speech latent factors are encoded in the latent space of MDVAE. These experiments include manipulating audiovisual speech, audiovisual facial image denoising, and audiovisual speech emotion recognition. The results show that MDVAE effectively combines the audio and visual information in its latent space. They also show that the learned static representation of audiovisual speech can be used for emotion recognition with few labeled data, and with better accuracy compared with unimodal baselines and a state-of-the-art supervised model based on an audiovisual transformer architecture. </p>
 
-				<!-- Phase reconstruction problem -->
-				<span style="font-size: large;"><a name="phase_reconstruction"></a><strong>MDVAE: Multimodal Dynamical Variational Autoencoder</strong></span>
-				<hr>
-				<p style = "text-align: justify; vertical-align: top;">The VAE has been extended in many ways, including for dealing with data that are either multimodal or dynamical (i.e., sequential), but not both at the same time. This paper proposes an approach to combine these two extensions in order to process simultaneously multimodal data and sequential data (e.g., audio-visual data).
-				To our knowledge, it is the first generative model that considers the inputs' multimodality and their dynamical aspects. Our goal is to have a hierarchical latent space, one in the temporal perspective to dissociate static information from dynamical information and another in the modality perspective to separate common information from specific information for each modality.
-				</p>
-				Two significant contributions are implemented in our studies:
-				<ul>
-				  <li> Representation of heterogeneous multimodal data by low-dimensional latent spaces learned in an unsupervised way: a latent dynamical space specific to each modality, taking into account temporal dependencies. Another latent dynamical space but this time shared by the modalities. And finally, a latent static space to encode the global and temporally independent information. Trained on an audio-visual database, we experimentally show that the MDVAE manages to dissociate the dynamical information from the global static information while factoring it into shared and modality-specific latent spaces. </li>
-				  <li> Improvement of the data reconstruction quality by training MDVAE in two steps: the first step consists in learning VQ-VAE independently for each modality without the temporal aspect. Moreover, the second step consists in learning the MDVAE, whose inputs are the intermediate representations of the VQ-VAE before quantization. The temporal disentanglement and the modalities' disentanglement occur in this second stage.</li>
-				</ul>
 				<div style="width:100%; text-align: center">
 					<table>
 						<td>
@@ -391,33 +382,18 @@
 				}
     		</script>
 
-			<div style="width:100%; text-align: center;">
-			<table style="width:100%; text-align: center;">
-					<td>
-						<p>  Example of speech power spectrogram reconstructed (0-1 s) and generated (1-2.6 s) by a MDVAE model.</p>
-						<p><button onclick="myFunctionZa()"> Sampling according to the Gaussian distribution prior of <span style="color:blue">\(\mathbf{z}^{(a)}\) </span></button></p>
-						<img id="za1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
-						<img id="za2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
-					</td>
-					<td>
-						<p>  Example of speech power spectrogram reconstructed (0-1 s) and generated (1-2.6 s) by a MDVAE model.</p>
-						<p><button onclick="myFunctionZav()"> Sampling according to the Gaussian distribution prior of <span style="color:green">\(\mathbf{z}^{(av)}\) </span></button></p>
-						<img id="zav1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
-						<img id="zav2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
-					</td>
-			</table>
-			</div>
+
 
 
 			<!-- Interpolation in the static audiovisual latent space -->
-			<span style="font-size: large;"><a name="latentspace"></a><strong>Interpolation in the static audiovisual latent space</strong></span>
+			<span style="font-size: large;"><a name="latentspace"></a><strong>Interpolation of the static audiovisual latent variable <span style="color:green">\(\mathbf{w}\)</span></strong></span>
 			<hr>
-			
+
 			
 			<div style="width:100%; text-align: center;">
 			<table style="width:100%; text-align: center;">
 					<td>
-						<video controls autoplay  muted loop preload="auto" width="300">
+						<video controls autoplay  muted loop preload="auto" width="350">
 						  <source src="demos/Video/identity_interpolation.mp4" type="video/mp4">
 						  <source src="demos/Video/identity_interpolation.ogg" type="video/ogg">
 						  Your browser does not support the video tag.
@@ -425,7 +401,7 @@
 						<p> Same emotion, different identities.</p>
 					</td>
 					<td>
-						<video controls autoplay  muted loop preload="auto" width="300">
+						<video controls autoplay  muted loop preload="auto" width="350">
 						  <source src="demos/Video/emotions_interpolation.mp4" type="video/mp4">
 						  <source src="demos/Video/emotions_interpolation.ogg" type="video/ogg">
 						  Your browser does not support the video tag.
@@ -484,45 +460,108 @@
 			</div>
 
 			<!-- Interpolation in the static audiovisual latent space -->
-			<span style="font-size: large;"><a name="landmark+visual"></a><strong>Generalization to other type of modalities</strong></span>
+			<span style="font-size: large;"><a name="landmark+visual"></a><strong>conditioned audiovisual speech generation</strong></span>
+				<p>We illustrate the ability of the MDVAE model to generate speech spectrograms with a qualitative example.  Figures~\ref{fig:audio-generation-za} and \ref{fig:audio-generation-zav} show spectrograms generated by sampling according to the prior distribution of $\zav$ and $\za$, respectively, conditioned on the first thirty frames (the lighted block in the figures). These first thirty frames (with a duration of 1s) are obtained through analysis-resynthesis. After 1s, we switch the MDVAE to pure generation mode. We can see that the spectrograms generated with the prior distribution of $\zav$ exhibit a harmonic structure.</p>
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+					<td>
+						<p>  Example of speech power spectrogram reconstructed (0-1 s) and generated (1-2.6 s) by a MDVAE model.</p>
+						<p><button onclick="myFunctionZa()"> Sampling according to the Gaussian distribution prior of <span style="color:blue">\(\mathbf{z}^{(a)}\) </span></button></p>
+						<img id="za1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
+						<img id="za2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
+					</td>
+					<td>
+						<p>  Example of speech power spectrogram reconstructed (0-1 s) and generated (1-2.6 s) by a MDVAE model.</p>
+						<p><button onclick="myFunctionZav()"> Sampling according to the Gaussian distribution prior of <span style="color:green">\(\mathbf{z}^{(av)}\) </span></button></p>
+						<img id="zav1" src="demos/generation/audio/original.png" alt="audio-w"  width="400" />
+						<img id="zav2" src="demos/generation/audio-2/original.png" alt="audio-w"  width="400" />
+					</td>
+			</table>
+			</div>
 
-			<div style="width:100%; text-align: justify;">
-			<table style="width:100%; text-align: justify;">
+				<p>Similarly, we illustrate the ability of the MDVAE model to generate visual frames with a qualitative example. Figure~\ref{fig:generation-zv} and \ref{fig:generation-zav} respectively illustrate this by sampling following the Gaussian prior of $\zv$ and $\zav$, conditioned on the analyzed-resynthesized first frame of the sequence. This strategy of conditioning to the first frame, allows the generation mode to have temporally coherent sequences. The first lightened lines correspond to the original visual sequences, and the other lines are three different generations. As expected, we have a smooth transition from the analyzed-resynthesized frame to the generated one.</p>
 
-				<td>
-					<p>We trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the lip landmarks only.</p>
-					<div style="width:100%; text-align: center; border: 1px solid black;" class="video">
-						<video controls  muted loop preload="auto" width="500" height="500">
-						  <source src="demos/Video/landmark-visual.mp4" type="video/mp4">
-						  <source src="demos/Video/landmark-visual.ogg" type="video/ogg">
-						  Your browser does not support the video tag.
-						</video>
-					</div>
-				</td>
-				<td>
-					<p>We trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the left view.</p>
-					<div style="width:100%; text-align: center; border: 1px solid black;" class="video">
-						<video controls  muted loop preload="auto" width="500" height="500" >
-						  <source src="demos/Video/left+front.mp4" type="video/mp4">
-						  <source src="demos/Video/left+front.ogg" type="video/ogg">
-						  Your browser does not support the video tag.
-						</video>
-					</div>
-				</td>
+			<div style="width:100%; text-align: center;">
+			<table style="width:100%; text-align: center;">
+					<td>
+						<p>  Original sequence.</p>
+						<img src="demos/generation/visual/0.png" alt="audio-w"  width="400" />
+						<p>  Generated sequence.</p>
+						<img id="zv1" src="demos/generation/visual/0.png" alt="tt"  width="400" />
+						<img id="zav1_visual" src="demos/generation/visual/0.png" alt="tt"  width="400" />
+					</td>
+					<td>
+						<p>  Original sequence.</p>
+						<img id="original" src="demos/generation/visual-2/0.png" alt="audio-w"  width="400" />
+						<p>  Generated sequence.</p>
+						<img id="zv2" src="demos/generation/visual-2/0.png" alt="tt"  width="400" />
+						<img id="zav2_visual" src="demos/generation/visual-2/0.png" alt="tt"  width="400" />
+					</td>
+					<td>
+						<p><button onclick="myFunctionZav_()"> Sampling according to the Gaussian distribution prior of <span style="color:green">\(\mathbf{z}^{(av)}\) </span></button></p>
+						<p><button onclick="myFunctionZv()"> Sampling according to the Gaussian distribution prior of <span style="color:red">\(\mathbf{z}^{(v)}\) </span></button></p>
+					</td>
 			</table>
 			</div>
 
 				<script>
-					var figure = $(".video").hover( hoverVideo, hideVideo );
+				var zv  = 1;
+				var zav  = 1;
+        		function myFunctionZav_() {
+				  zv = Math.floor(Math.random()*3) + 1;
+				  document.getElementById('zv1').src="demos/generation/visual/"+zv+".png"
+				  document.getElementById('zv2').src="demos/generation/visual-2/"+zv+".png"
 
-						function hoverVideo(e) {
-							$('video', this).get(0).play();
-						}
+				  document.getElementById('zav1_visual').src="demos/generation/visual/0.png"
+				  document.getElementById('zav2_visual').src="demos/generation/visual/0.png"
+				}
 
-						function hideVideo(e) {
-							$('video', this).get(0).pause();
-						}
-				</script>
+				function myFunctionZv() {
+				  zav = Math.floor(Math.random() * 3)+1;
+				  document.getElementById('zav1_visual').src="demos/generation/visual/"+zav+"_.png"
+				  document.getElementById('zav2_visual').src="demos/generation/visual-2/"+zav+"_.png"
+
+				  document.getElementById('zv1').src="demos/generation/visual/0.png"
+				  document.getElementById('zv2').src="demos/generation/visual-2/0.png"
+				}
+    		</script>
+<!--			<div style="width:100%; text-align: justify;">-->
+<!--			<table style="width:100%; text-align: justify;">-->
+
+<!--				<td>-->
+<!--					<p>We trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the lip landmarks only.</p>-->
+<!--					<div style="width:100%; text-align: center; border: 1px solid black;" class="video">-->
+<!--						<video controls  muted loop preload="auto" width="500" height="500">-->
+<!--						  <source src="demos/Video/landmark-visual.mp4" type="video/mp4">-->
+<!--						  <source src="demos/Video/landmark-visual.ogg" type="video/ogg">-->
+<!--						  Your browser does not support the video tag.-->
+<!--						</video>-->
+<!--					</div>-->
+<!--				</td>-->
+<!--				<td>-->
+<!--					<p>We trained VQ-MDVAE on the MEAD database, but replacing the audio modality by the left view.</p>-->
+<!--					<div style="width:100%; text-align: center; border: 1px solid black;" class="video">-->
+<!--						<video controls  muted loop preload="auto" width="500" height="500" >-->
+<!--						  <source src="demos/Video/left+front.mp4" type="video/mp4">-->
+<!--						  <source src="demos/Video/left+front.ogg" type="video/ogg">-->
+<!--						  Your browser does not support the video tag.-->
+<!--						</video>-->
+<!--					</div>-->
+<!--				</td>-->
+<!--			</table>-->
+<!--			</div>-->
+
+<!--				<script>-->
+<!--					var figure = $(".video").hover( hoverVideo, hideVideo );-->
+
+<!--						function hoverVideo(e) {-->
+<!--							$('video', this).get(0).play();-->
+<!--						}-->
+
+<!--						function hideVideo(e) {-->
+<!--							$('video', this).get(0).pause();-->
+<!--						}-->
+<!--				</script>-->
 
 		</div>
 	</div>
